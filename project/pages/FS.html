@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансов симулатор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        .option-btn {
+            margin: 5px;
+            padding: 8px;
+            font-size: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .option-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 18px;">Финансов симулатор</h1>
+        <p style="font-size: 14px;">Управлявай бюджета си разумно и постигни финансова стабилност!</p>
+        <p id="balance">Баланс: 1000 лв.</p>
+        <p id="scenario">Започваш месеца. Какво ще направиш?</p>
+        <button class="option-btn" onclick="chooseOption(1)">Работя на допълнителна работа (+500 лв.)</button>
+        <button class="option-btn" onclick="chooseOption(2)">Инвестирам 300 лв. с възможност за печалба</button>
+        <button class="option-btn" onclick="chooseOption(3)">Харча 400 лв. за забавления</button>
+        <button class="option-btn" onclick="chooseOption(4)">Плащам наем (-600 лв.)</button>
+        <p class="message" id="message"></p>
+    </div>
+    <script>
+        let balance = 1000;
+
+        function chooseOption(option) {
+            let scenarioText = document.getElementById("scenario");
+            let balanceText = document.getElementById("balance");
+            let messageText = document.getElementById("message");
+            
+            if (option === 1) {
+                balance += 500;
+                scenarioText.innerHTML = "Допълнителната работа беше добра идея! Какво ще направиш следващо?";
+            } else if (option === 2) {
+                let investmentSuccess = Math.random() > 0.5 ? 600 : 0;
+                balance += investmentSuccess - 300;
+                scenarioText.innerHTML = investmentSuccess > 0 ? "Инвестицията се изплати! Спечели 600 лв." : "Инвестицията не се изплати. Опитай отново!";
+            } else if (option === 3) {
+                balance -= 400;
+                scenarioText.innerHTML = "Забавленията са важни, но бюджетът ти намаля. Какво ще направиш следващо?";
+            } else if (option === 4) {
+                balance -= 600;
+                scenarioText.innerHTML = "Наемът е платен, но трябва да внимаваш с останалите си разходи!";
+            }
+            
+            balanceText.innerHTML = `Баланс: ${balance} лв.`;
+            checkGameOver();
+        }
+        
+        function checkGameOver() {
+            if (balance <= 0) {
+                document.getElementById("message").textContent = "Бюджетът ти е изчерпан! Опитай отново.";
+                setTimeout(() => location.reload(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>

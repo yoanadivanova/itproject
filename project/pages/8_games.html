@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игри за финансиране</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #87CEEB; /* Светло син */
+            color: #003366;
+            text-align: center;
+            position: relative;
+            overflow: auto;
+        }
+
+        .background-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #228b22; /* По-тъмно зелено */
+            opacity: 0.6;
+            animation: moveDots 10s infinite ease-in-out;
+        }
+
+        @keyframes moveDots {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(200px, 200px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+ .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #006400; /* Тъмно зелено */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* При задържане на бутона */
+.styled-button:hover {
+    background-color: #228b22; /* По-светло зелено */
+}
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+
+        td {
+            padding: 10px 20px;
+            border: 1px solid #003366;
+        }
+
+        td a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #003366;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+
+        td a:hover {
+            background-color: #0055aa;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 20px 0;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-dots">
+        <div class="dot" style="width: 50px; height: 50px; top: 10%; left: 30%;"></div>
+        <div class="dot" style="width: 80px; height: 80px; top: 50%; left: 70%;"></div>
+        <div class="dot" style="width: 60px; height: 60px; top: 70%; left: 20%;"></div>
+        <div class="dot" style="width: 100px; height: 100px; top: 20%; left: 50%;"></div>
+    </div>
+
+    <table>
+        <tr>
+            <td><a href="Games_12-14.html">Игра за ученици 12-14г.</a></td>
+            <td><a href="Games_15-18.html">Игри за ученици 15-18г.</a></td>
+        </tr>
+    </table>
+
+    <h1>Игри за финансова грамотност</h1>
+    <h2> Представяме ВИ нашите топ игри </h2>
+        <img src="../Images/istockphoto.jpg" alt="P1" Height="400" Width="400">
+        <img src="../Images/know-how.jpg" alt="P2" Height="400" Width="400">
+<br><br>
+
+<div class="buttons">
+   
+    <a href="index.html" class="styled-button" >Назад</a>
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            alert("Добре дошли в платформата за финансиране на игри!");
+        });
+    </script>
+</body>
+</html>
+

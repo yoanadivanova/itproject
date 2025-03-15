@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бюджетен лабиринт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: auto;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .choice-btn {
+            margin: 10px;
+            padding: 12px;
+            width: 80%;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .choice-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0px); }
+        }
+        h1 {
+            animation: floating 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Бюджетен лабиринт</h1>
+        <p id="budget">Бюджет: 1000 лв.</p>
+        <p id="scenario">Започваш месеца. Какво ще направиш?</p>
+        <button class="choice-btn" onclick="chooseOption(1)">Спестявам 200 лв.</button>
+        <button class="choice-btn" onclick="chooseOption(2)">Купувам нов телефон (-500 лв.)</button>
+        <button class="choice-btn" onclick="chooseOption(3)">Работя на почасова работа (+300 лв.)</button>
+        <button class="choice-btn" onclick="chooseOption(4)">Плащам наем (-400 лв.)</button>
+        <button class="choice-btn" onclick="chooseOption(5)">Попадам на неочакван разход (-250 лв.)</button>
+        <button class="choice-btn" onclick="chooseOption(6)">Получавам бонус (+400 лв.)</button>
+    </div>
+    <audio id="click-sound" src="https://www.fesliyanstudios.com/play-mp3/4380"></audio>
+    <script>
+        let budget = 1000;
+        function chooseOption(option) {
+            let scenarioText = document.getElementById("scenario");
+            let budgetText = document.getElementById("budget");
+            document.getElementById("click-sound").play();
+            
+            if (option === 1) {
+                budget += 200;
+                scenarioText.innerHTML = "Спестяването е добра идея! Какво ще направиш следващо?";
+            } else if (option === 2) {
+                budget -= 500;
+                scenarioText.innerHTML = "Новият телефон е готин, но бюджетът ти намаля! Какво ще направиш следващо?";
+            } else if (option === 3) {
+                budget += 300;
+                scenarioText.innerHTML = "Работата ти носи допълнителен доход! Какво ще направиш следващо?";
+            } else if (option === 4) {
+                budget -= 400;
+                scenarioText.innerHTML = "Наемът е платен, но бюджетът ти намаля. Какво ще направиш следващо?";
+            } else if (option === 5) {
+                budget -= 250;
+                scenarioText.innerHTML = "Неочакван разход! Трябва да си подготвен за такива ситуации.";
+            } else if (option === 6) {
+                budget += 400;
+                scenarioText.innerHTML = "Честито! Получи бонус, който ще помогне на бюджета ти!";
+            }
+            
+            budgetText.innerHTML = `Бюджет: ${budget} лв.`;
+            checkGameOver();
+        }
+        
+        function checkGameOver() {
+            if (budget <= 0) {
+                alert("Бюджетът ти е изчерпан! Опитай отново.");
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

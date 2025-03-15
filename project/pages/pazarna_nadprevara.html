@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пазарна надпревара</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: auto;
+	    
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        .category {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .product {
+            margin: 5px;
+            padding: 8px;
+            font-size: 12px;
+            background: #4CAF50;
+            color: white;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .product:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+<table border="0">
+<tr>
+<td width="500">
+    <div class="container">
+        <h1 style="font-size: 20px;">Пазарна надпревара</h1>
+        <p style="font-size: 16px;">Избери най-изгодния продукт във всяка категория!</p>
+        <div id="categories"></div>
+        <p class="message" id="message"></p>
+    </div>
+    <script>
+        const categories = {
+            "Смартфони": [
+                { name: "Телефон A", price: 500, quality: 8 },
+                { name: "Телефон B", price: 450, quality: 7 },
+                { name: "Телефон C", price: 600, quality: 9 },
+                { name: "Телефон D", price: 550, quality: 8.5 },
+                { name: "Телефон E", price: 400, quality: 6 }
+            ],
+            "Лаптопи": [
+                { name: "Лаптоп A", price: 1200, quality: 9 },
+                { name: "Лаптоп B", price: 1100, quality: 8 },
+                { name: "Лаптоп C", price: 1300, quality: 9.5 },
+                { name: "Лаптоп D", price: 1000, quality: 7 },
+                { name: "Лаптоп E", price: 1400, quality: 10 }
+            ],
+            "Слушалки": [
+                { name: "Слушалки A", price: 150, quality: 7 },
+                { name: "Слушалки B", price: 100, quality: 6 },
+                { name: "Слушалки C", price: 200, quality: 9 },
+                { name: "Слушалки D", price: 180, quality: 8 },
+                { name: "Слушалки E", price: 130, quality: 7.5 }
+            ]
+        };
+        
+        function renderCategories() {
+            const container = document.getElementById("categories");
+            container.innerHTML = "";
+            
+            for (let category in categories) {
+                let div = document.createElement("div");
+                div.className = "category";
+                div.innerHTML = `<h3 style="font-size: 14px;">${category}</h3>`;
+                
+                categories[category].forEach((product, index) => {
+                    let productDiv = document.createElement("div");
+                    productDiv.className = "product";
+                    productDiv.innerHTML = `${product.name} - ${product.price} лв. - ${product.quality}/10`;
+                    productDiv.onclick = () => chooseProduct(category, index);
+                    div.appendChild(productDiv);
+                });
+                container.appendChild(div);
+            }
+        }
+        
+        function chooseProduct(category, index) {
+            const bestProduct = categories[category].reduce((best, current) => (current.quality / current.price > best.quality / best.price ? current : best));
+            if (categories[category][index] === bestProduct) {
+                document.getElementById("message").textContent = "Поздравления! Избра най-изгодния продукт в " + category + "!";
+            } else {
+                document.getElementById("message").textContent = "Не беше най-добрата сделка в " + category + ". Опитай отново!";
+            }
+        }
+        
+        renderCategories();
+    </script>
+ <div class="instructions">
+</td>
+<td width="100"></td>
+<td align="left">
+        <h3>Инструкции за избор на отговор</h3></br>
+        <h4>Всеки избор е обозначен с буква. Използвайте следните клавиши, за да изберете правилния отговор:</h4>
+            <b>A</b> - Избира първата възможност. Обикновено означава най-консервативния или стандартен избор.</li></br>
+            <b>B</b> - Избира втората възможност. Често е балансиран вариант между риск и печалба.</li></br>
+            <b>C</b> - Избира третата възможност. Може да бъде по-иновативен или нестандартен подход.</li></br>
+            <b>D</b> - Избира четвъртата възможност. В повечето случаи означава най-рисковия, но потенциално най-печеливш избор.</li></br>
+        <p>След като направите своя избор, ще получите обратна връзка за резултата.</p>
+        <p>Опитайте се да анализирате всяка опция внимателно, преди да направите своя избор, тъй като различните стратегии водят до различни резултати.</p>
+    </div> </td></br>
+</body>
+</html>
