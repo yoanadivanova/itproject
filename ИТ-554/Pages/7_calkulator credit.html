@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредитен Калкулатор</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0fff0; /* Бледо зелено */
+            color: #006400; /* Тъмно зелено */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .calculator-container {
+            text-align: center;
+            background-color: #ffffff; /* Бяло */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 100, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            z-index: 2;
+        }
+ .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #006400; /* Тъмно зелено */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* При задържане на бутона */
+.styled-button:hover {
+    background-color: #228b22; /* По-светло зелено */
+}
+
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-size: 1rem;
+        }
+
+        input, button {
+            font-size: 1rem;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #006400;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #006400;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #228b22; /* Горска зелено */
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .money-decor {
+            position: absolute;
+            background-color: #90ee90; /* Светло зелено */
+            border: 2px solid #006400;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .money-decor.one {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+        }
+
+        .money-decor.two {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 8%;
+        }
+
+        .money-decor.three {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            right: 5%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="money-decor one"></div>
+    <div class="money-decor two"></div>
+    <div class="money-decor three"></div>
+    <div class="calculator-container">
+        <h1>Калкулатор "КРЕДИТ"</h1>
+        <form id="credit-form">
+            <label for="loan-amount">Сума на кредита (лв):</label>
+            <input type="number" id="loan-amount" name="loan-amount" required>
+
+            <label for="interest-rate">Лихвен процент (%):</label>
+            <input type="number" id="interest-rate" name="interest-rate" step="0.01" required>
+
+            <label for="loan-term">Срок на кредита (години):</label>
+            <input type="number" id="loan-term" name="loan-term" required>
+
+            <button type="button" onclick="calculateCredit()">Изчисли</button>
+<br>
+<br>
+<div class="buttons">
+   
+    <a href="index.html" class="styled-button" >Назад</a>
+</div>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateCredit() {
+            const amount = parseFloat(document.getElementById('loan-amount').value);
+            const rate = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
+            const term = parseFloat(document.getElementById('loan-term').value) * 12;
+
+            if (!amount || !rate || !term) {
+                document.getElementById('result').textContent = 'Моля, попълнете всички полета правилно!';
+                return;
+            }
+
+            const monthlyPayment = (amount * rate) / (1 - Math.pow(1 + rate, -term));
+            document.getElementById('result').textContent = `Месечна вноска: ${monthlyPayment.toFixed(2)} лв.`;
+        }
+    </script>
+ 
+</body>
+</html>

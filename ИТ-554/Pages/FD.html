@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паричен детектив</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        .scenario {
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .choice-btn {
+            margin: 5px;
+            padding: 8px;
+            font-size: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .choice-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 18px;">Паричен детектив</h1>
+        <p style="font-size: 14px;">Разпознай измамата и вземи правилното финансово решение!</p>
+        <p class="scenario" id="scenario"></p>
+        <button class="choice-btn" id="choice1" onclick="checkAnswer(1)"></button>
+        <button class="choice-btn" id="choice2" onclick="checkAnswer(2)"></button>
+        <p class="message" id="message"></p>
+    </div>
+    <script>
+        const scenarios = [
+            {
+                text: "Получаваш имейл, който твърди, че си спечелил голяма сума пари. За да ги получиш, трябва да платиш малка такса. Какво ще направиш?",
+                choices: ["Плащам таксата, за да получа наградата", "Игнорирам имейла, вероятно е измама"],
+                correct: 2
+            },
+            {
+                text: "Получаваш обаждане от човек, който твърди, че е от твоята банка и иска личните ти данни за проверка. Какво ще направиш?",
+                choices: ["Давам информацията, защото е от банката", "Затварям и се свързвам директно с банката"],
+                correct: 2
+            },
+            {
+                text: "Онлайн реклама предлага инвестиция с гарантирана висока възвръщаемост и без риск. Как реагираш?",
+                choices: ["Инвестирам веднага, защото няма риск", "Проучвам подробно и не инвестирам без сигурност"],
+                correct: 2
+            }
+        ];
+        
+        let currentScenario = 0;
+        function loadScenario() {
+            document.getElementById("scenario").textContent = scenarios[currentScenario].text;
+            document.getElementById("choice1").textContent = scenarios[currentScenario].choices[0];
+            document.getElementById("choice2").textContent = scenarios[currentScenario].choices[1];
+        }
+        
+        function checkAnswer(choice) {
+            if (choice === scenarios[currentScenario].correct) {
+                document.getElementById("message").textContent = "Правилен отговор! Браво, разпозна измамата!";
+            } else {
+                document.getElementById("message").textContent = "Грешен отговор! Внимавай със съмнителните предложения.";
+            }
+            
+            setTimeout(() => {
+                currentScenario++;
+                if (currentScenario < scenarios.length) {
+                    document.getElementById("message").textContent = "";
+                    loadScenario();
+                } else {
+                    document.getElementById("message").textContent = "Поздравления! Завърши всички случаи като истински финансов детектив!";
+                }
+            }, 2000);
+        }
+        
+        loadScenario();
+    </script>
+</body>
+</html>
