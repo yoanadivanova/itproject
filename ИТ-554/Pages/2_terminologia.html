@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансови термини</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0fff0; /* Бледо зелено */
+            color: #006400; /* Тъмно зелено */
+            text-align: center;
+            position: relative;
+            overflow: auto;
+        }
+
+        /* Добавяме кръгчета на фона */
+        .background-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #228b22;
+            opacity: 0.6;
+            animation: moveDots 10s infinite ease-in-out;
+        }
+
+        @keyframes moveDots {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(200px, 200px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-bottom: 3px solid #006400;
+        }
+
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 100, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #006400;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .scrolling-text {
+    width: 100%;
+    background-color: green; /* Зелен фон */
+    color: white;
+    padding: 10px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+
+        /* Бутоните за навигация */
+        .button-container {
+            position: fixed;
+            width: 100%;
+            bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+
+
+ 
+    </style>
+</head>
+<body>
+    <div class="background-dots">
+        <div class="dot" style="width: 50px; height: 50px; top: 10%; left: 30%;"></div>
+        <div class="dot" style="width: 80px; height: 80px; top: 50%; left: 70%;"></div>
+        <div class="dot" style="width: 60px; height: 60px; top: 70%; left: 20%;"></div>
+        <div class="dot" style="width: 100px; height: 100px; top: 20%; left: 50%;"></div>
+      
+    </div>
+
+    <header>Финансови термини</header>
+
+    <table>
+        <tr><th>Термин</th><th>Дефиниция</th></tr>
+        <tr><td>Доход</td><td>Всички парични средства, които са спечелени или получени (напримир заплата, стипендия, пенсия, подарък).</td></tr>
+<td>Нетен доход</td>
+            <td>Чистата сума на постъпленията след приспадане на осигуровки и данъци, т.е. свободните разполагаеми средства, с които може да се опрерира.</td>
+        </tr>
+<td> Обещитение</td>
+	 <td>Сумата,която застрахователят изплаща при настъпване на събитието.</td>
+        <tr>
+        <tr><td>Разходи</td><td>Парите, използвани за покупка на стоки или услуги.</td></tr>
+<td>Постоянни разходи</td>
+            <td>Разходи, които не се променят в различните месеци, като например наем.</td>
+        </tr>
+        <tr>
+<td>Променливи разходи</td>
+            <td>Разходи, които са различни за всеки месец, като например за развлечения, ремонт на кола или стоматологични сметки.</td>
+        </tr>
+        <tr>
+        <tr><td>Застраховка</td><td>Начин да се гарантира финансова закрила срещу различни рискове.</td></tr>
+<td>Спестявания</td>
+            <td>Заделяне на част от текущите доходи, за да се използват в бъдеще. Спестяването в банка е по-сигурно и носи някаква лихва.</td>
+        </tr>
+        <tr>
+<td>Плати първо на себе си</td>
+            <td>Заделяния на средства за спестяване и осигуровки, преди да се направят други разходи.</td>
+        </tr>
+        <tr>
+        <tr><td>Бюджет</td><td>План за доходите и разходите за отделен период от време,който се използва за планиране и управление на парични средства .</td></tr>
+ <td>Балансиран бюджет</td>
+            <td>Бюджет, при който доходите са равни на разходите.</td>
+        </tr>
+
+
+    </table><br><br>
+  
+
+    <div class="scrolling-text">
+    Използвана литература: Учебник по практични и лични финанси
+</div>
+
+<br><br>
+<br><br>
+<div class="button-container">
+        <a href="index.html" class="nav-button">Назад</a>
+    </div>
+
+</body>
+</html>

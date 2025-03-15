@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лични финанси</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0fff0; /* Бледо зелено */
+            color: #006400; /* Тъмно зелено */
+            text-align: justify;
+            position: relative;
+            overflow: auto;
+        }
+
+        /* Добавяме кръгчета на фона */
+        .background-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #228b22; /* По-тъмно зелено */
+            opacity: 0.6;
+            animation: moveDots 10s infinite ease-in-out;
+        }
+
+        /* Анимация за хаотично разпръскване на кръгчета */
+        @keyframes moveDots {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(200px, 200px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff; /* Бяло */
+        }
+
+        td {
+            padding: 10px 20px;
+            border: 1px solid #006400;
+        }
+
+        td a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #006400;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+
+        td a:hover {
+            background-color: #228b22; /* Горска зелено */
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            border-bottom: 2px solid #006400;
+            padding-bottom: 10px;
+            width: 50%; /* Намалявам ширината на линията */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #006400;
+            width: 50%; /* Намалявам ширината на линията */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        font {
+            display: block;
+            margin: 20px;
+            font-size: 1.2rem;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-gallery img {
+            width: 200px;
+            height: 150px;
+            border: 2px solid #006400;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 100, 0, 0.2);
+        }
+
+        .button-container {
+            margin: 20px 0;
+        }
+
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .next-button:hover {
+            background-color: #45a049;
+        }
+
+	.logo {
+  	  position: absolute;
+   	 top: 10px;
+   	 left: 40px;
+   	 width: 150px; /* Регулирай размера */
+   	 height: auto;
+	background: none; /* Премахва фона */
+	}
+
+    </style>
+</head>
+<body>
+    <!-- Кръгчета на фона -->
+    <div class="background-dots">
+        <div class="dot" style="width: 50px; height: 50px; top: 10%; left: 30%;"></div>
+        <div class="dot" style="width: 80px; height: 80px; top: 50%; left: 70%;"></div>
+        <div class="dot" style="width: 60px; height: 60px; top: 70%; left: 20%;"></div>
+        <div class="dot" style="width: 100px; height: 100px; top: 20%; left: 50%;"></div>
+        <div class="dot" style="width: 40px; height: 40px; top: 80%; left: 40%;"></div>
+        <div class="dot" style="width: 120px; height: 120px; top: 40%; left: 10%;"></div>
+        <div class="dot" style="width: 70px; height: 70px; top: 30%; left: 80%;"></div>
+        <div class="dot" style="width: 90px; height: 90px; top: 60%; left: 60%;"></div>
+    </div>
+<img src="../Advertising_materials/LOGO7.png" alt="logo" class="logo">
+
+
+    <table>
+        <tr>
+            <td><a href="2_terminologia.html">ТЕРМИНОЛОГИЯ</a></td>
+            <td><a href="3_anketa.html">АНКЕТА</a></td>
+            <td><a href="4_zapitvania.html">ЗАПИТВАНИЯ</a></td> <!-- Пътят с интервал между 4 и група -->
+            <td><a href="5_galery.html">ГАЛЕРИЯ</a></td>
+            <td><a href="6_calkulator debit.html">КАЛКУЛАТОР ДЕПОЗИТ</a></td>
+            <td><a href="7_calkulator credit.html">КАЛКУЛАТОР КРЕДИТ</a></td>
+            <td><a href="8_games.html
+">ИГРИ</a></td>
+            <td><a href="9_TEST.html">ТЕСТОВЕ</a></td>
+            <td><a href="10_za_nas.html">ЗА НАС</a></td>
+            
+        </tr>
+    </table>
+<h1>Метод "Плати първо на себе си" </h1>
+<h2>Методът „Плати първо на себе си“ (Pay Yourself First) е финансов принцип, който насърчава хората първо да отделят пари за спестявания и инвестиции, преди да покрият останалите си разходи. Вместо да спестяваш „каквото остане“ в края на месеца, този метод изисква веднага след получаване на дохода да заделиш определен процент за бъдещето си.
+
+Как работи методът?<br>
+✅ Определи процент за спестяване – например 10-20% от доходите.<br>
+✅ Автоматизирай процеса – настрой автоматичен превод към спестовна сметка или инвестиционен фонд.<br>
+✅ Планирай останалите разходи – след като спестяванията са заделени, използвай останалите средства за сметки, храна и развлечения.<br>
+✅ Използвай спестените пари за дългосрочни цели – създай авариен фонд, инвестирай или планирай големи покупки.
+Защо е ефективен?<br>
+✅ Създава финансова дисциплина – спестяването става приоритет, а не остатъчна мисъл.<br>
+✅ Гарантира натрупване на спестявания – дори при неочаквани разходи, ще имаш заделени средства.<br>
+✅ Помага за дългосрочна финансова сигурност – осигурява стабилност и възможности за бъдещи инвестиции.</h2>
+    <h1>Какво са лични финанси?</h1>
+    <h2>Всички налични (доходи) и потенциални (застраховка, кредит) средства, с които разполагаме от различни източници.</h2>
+
+    <h1>Управление на личните финанси</h1>
+    <h2>Решения и действия, на база придобити знания и практически умения, които всеки човек или домакинство предприема по отношение на парите си, включващи съставяне на бюджет, застраховане, спестяване, инвестиране, ползване на кредити, планиране на допълнителни пенсионни възможности.</h2>
+
+    <div class="image-gallery">
+        <img src="../Images/biz-financi.jpg" alt="P1">
+        <img src="../Images/rnh.jpg" alt="P2">
+        <img src="../Images/hb.jpg" alt="P3">
+    </div>
+
+    
+</body>
+</html>

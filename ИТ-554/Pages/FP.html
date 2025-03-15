@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансов пъзел</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .puzzle-piece {
+            display: inline-block;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .puzzle-piece:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Финансов пъзел</h1>
+        <p>Подреди правилно частите на финансовия термин!</p>
+        <div id="puzzle-container"></div>
+        <p class="message" id="message"></p>
+    </div>
+    <audio id="success-sound" src="https://www.fesliyanstudios.com/play-mp3/4381"></audio>
+    <script>
+        const correctOrder = ["Бюджет", "е", "план", "за", "доходи", "и", "разходи"];
+        let shuffledOrder = [...correctOrder].sort(() => Math.random() - 0.5);
+        const container = document.getElementById("puzzle-container");
+        
+        function renderPuzzle() {
+            container.innerHTML = "";
+            shuffledOrder.forEach((word, index) => {
+                let span = document.createElement("span");
+                span.textContent = word;
+                span.className = "puzzle-piece";
+                span.draggable = true;
+                span.addEventListener("dragstart", dragStart);
+                span.dataset.index = index;
+                container.appendChild(span);
+            });
+        }
+        
+        let draggedItem = null;
+        function dragStart(event) {
+            draggedItem = event.target;
+            event.dataTransfer.setData("text", event.target.dataset.index);
+        }
+        
+        container.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
+        
+        container.addEventListener("drop", (event) => {
+            event.preventDefault();
+            let targetIndex = event.target.dataset.index;
+            if (targetIndex !== undefined && draggedItem) {
+                let draggedIndex = draggedItem.dataset.index;
+                [shuffledOrder[draggedIndex], shuffledOrder[targetIndex]] = [shuffledOrder[targetIndex], shuffledOrder[draggedIndex]];
+                renderPuzzle();
+                checkWin();
+            }
+        });
+        
+        function checkWin() {
+            if (JSON.stringify(shuffledOrder) === JSON.stringify(correctOrder)) {
+                document.getElementById("message").textContent = "Поздравления! Подреди правилно финансовия термин!";
+                document.getElementById("success-sound").play();
+            }
+        }
+        
+        renderPuzzle();
+    </script>
+</body>
+</html>
+
